@@ -18,7 +18,7 @@ function Snippet() {
   };
   return (
     <div>
-      <h2>Check Contract</h2>
+      <h2>Check Contract (Anti-Phishing)</h2>
       <br />
       <Container textAlign="left">
         <Segment textAlign="left" secondary style={{ width: "50vw", margin: "auto" }}>
