@@ -6,6 +6,7 @@ import "./App.css";
 import ApiKeysContext from "./ApiKeys";
 import CheckContract from "./snippets/CheckContract";
 import CheckApprove from "./snippets/CheckApprove";
+import UniswapLoss from "./snippets/UniswapLoss";
 
 function App() {
   return (
@@ -24,9 +25,13 @@ function App() {
             <Link to="/check-approve">
               <Menu.Item name="Check Approve" />
             </Link>
+            <Link to="/uniswap-loss">
+              <Menu.Item name="Uniswap Loss" />
+            </Link>
           </Menu>
           <Route exact path="/check-contract" component={CheckContract} />
           <Route path="/check-approve" component={CheckApprove} />
+          <Route path="/uniswap-loss" component={UniswapLoss} />
         </div>
       </HashRouter>
     </ApiKeysContext.Provider>

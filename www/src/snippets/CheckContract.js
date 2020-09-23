@@ -24,13 +24,13 @@ function Snippet() {
         <Segment textAlign="left" secondary style={{ width: "50vw", margin: "auto" }}>
           <Form loading={loading} onSubmit={handleSubmit} spellcheck="false">
             <Form.Input
-              label="Address"
+              label="Contract Address"
               name="address"
               placeholder="0xbD17B1ce622d73bD438b9E658acA5996dc394b0d"
               onChange={handleChange}
             />
             <Form.TextArea
-              label="Hex Data"
+              label="Method Call Hex Data"
               name="hexData"
               placeholder="0x095ea7b3000000000000000000000000..."
               onChange={handleChange}
