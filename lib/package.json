@@ -1,0 +1,24 @@
+{
+  "name": "web3-snippets",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "mocha --require esm --timeout 2000000 './*.test.js'",
+    "prettify": "npx prettier \"./**/*.js\" --write"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "esm": "^3.2.25",
+    "ganache-core": "^2.11.3",
+    "mocha": "^8.1.1"
+  },
+  "dependencies": {
+    "bignumber.js": "^9.0.0",
+    "ethereum-input-data-decoder": "^0.3.1",
+    "lodash": "^4.17.20",
+    "node-fetch": "^2.6.1",
+    "web3": "^1.2.11"
+  }
+}
