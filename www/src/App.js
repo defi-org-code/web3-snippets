@@ -1,7 +1,7 @@
 import React from "react";
 import { HashRouter, Route, Link } from "react-router-dom";
 import { Menu } from "semantic-ui-react";
-import { getWeb3 } from "web3-snippets/helpers";
+import { getWeb3 } from "web3-snippets/eth-helpers";
 import "./App.css";
 import ApiKeysContext from "./ApiKeys";
 import CheckContract from "./snippets/CheckContract";
@@ -9,6 +9,7 @@ import CheckApprove from "./snippets/CheckApprove";
 import UniswapLoss from "./snippets/UniswapLoss";
 import Compounding from "./snippets/Compounding";
 import PancakeLoss from "./snippets/PancakeLoss";
+import PoolPosition from "./snippets/PoolPosition";
 
 function App() {
   return (
@@ -37,12 +38,16 @@ function App() {
             <Link to="/pancake-loss">
               <Menu.Item name="Pancake Loss" />
             </Link>
+            <Link to="/pool-position">
+              <Menu.Item name="Pool Positions" />
+            </Link>
           </Menu>
           <Route exact path="/check-contract" component={CheckContract} />
           <Route path="/check-approve" component={CheckApprove} />
           <Route path="/uniswap-loss" component={UniswapLoss} />
           <Route path="/compounding" component={Compounding} />
           <Route path="/pancake-loss" component={PancakeLoss} />
+          <Route path="/pool-position" component={PoolPosition} />
         </div>
       </HashRouter>
     </ApiKeysContext.Provider>
