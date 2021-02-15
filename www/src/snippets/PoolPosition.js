@@ -7,6 +7,21 @@ const poolTypeOptions = [
     key: 'Balancer',
     text: 'Balancer',
     value: PoolType.BALANCER
+  },
+  {
+    key: 'Uniswap',
+    text: 'Uniswap',
+    value: PoolType.UNISWAP
+  },
+  {
+    key: 'Sushiswap',
+    text: 'Sushiswap',
+    value: PoolType.SUSHISWAP
+  },
+  {
+    key: '1Inch',
+    text: '1Inch',
+    value: PoolType.ONEINCH
   }
 ];
 
