@@ -6,24 +6,68 @@ const poolTypeOptions = [
   {
     key: 'Balancer',
     text: 'Balancer',
-    value: PoolType.BALANCER
+    value: PoolType.BALANCER,
+    farmLabel: 'Farm Address'
+  },
+  {
+    key: 'Uniswap',
+    text: 'Uniswap',
+    value: PoolType.UNISWAP,
+    farmLabel: 'Farm Address'
+  },
+  {
+    key: 'Sushiswap',
+    text: 'Sushiswap',
+    value: PoolType.SUSHISWAP,
+    farmLabel: 'MasterChef Farm Pool Id (optional)'
+  },
+  {
+    key: '1Inch',
+    text: '1Inch',
+    value: PoolType.ONEINCH,
+    farmLabel: 'Farming Contract Address (optional)'
   }
 ];
-
 
 function Snippet() {
   const { web3 } = useApiKeys();
   const [input, setInput] = useState({});
   const [result, setResult] = useState();
   const [loading, setLoading] = useState(false);
-  const handleChange = (_e, { name, value }) => setInput({ ...input, [name]: value });
+  const [hideFarming, setHideFarming] = useState(true);
+  const [farmLabel, setFarmLabel] = useState(poolTypeOptions[0].farmLabel)
+  const handleChange = (_e, { name, value }) => {setInput({ ...input, [name]: value }); updateVisuals(name, value);};
+  const updateVisuals = (name, value) => {
+    let { holderInfo, poolType } = input;
+    if (name === 'poolType') {
+      poolType = value;
+    } else if (name === 'holderInfo') {
+      holderInfo = value;
+    }
+    const pool = findPoolType(poolType);
+    setFarmLabel(pool.farmLabel)
+    if (holderInfo && holderInfo.startsWith('0x') && (pool.value === PoolType.ONEINCH || pool.value === PoolType.SUSHISWAP)) {
+      setHideFarming(false);
+    } else {
+      setHideFarming(true);
+    }
+
+  };
   const handleSubmit = async () => {
-    const { poolAddress, holderAddress, poolType } = input;
+    const { poolAddress, holderInfo, poolType, farmAddress } = input;
     setLoading(true);
-    const result = await lpPositionStatus({ holderAddress, poolType, poolAddress, web3 });
+    const result = await lpPositionStatus(holderInfo, poolType, poolAddress, web3, farmAddress);
     setResult(result);
     setLoading(false);
   };
+  const findPoolType = (poolType) => {
+    for(const option of poolTypeOptions) {
+      if (option.value === poolType) {
+        return option;
+      }
+    }
+    return poolTypeOptions[0];
+  }
   return (
     <div>
       <h2>Pool Position Status</h2>
@@ -44,10 +88,17 @@ function Snippet() {
               onChange={handleChange}
             />
             <Form.Input
-              label="Liquidity Provider Wallet Address"
-              name="holderAddress"
+              label="Liquidity Provider Wallet Address Or Big Number of LP Tokens"
+              name="holderInfo"
               placeholder="0x49a2dcc237a65cc1f412ed47e0594602f6141936"
               onChange={handleChange}
+            />
+            <Form.Input
+              label={farmLabel}
+              name="farmAddress"
+              placeholder="0xe22f6a5dd9e491dfab49faefdb32d01aaf99703e"
+              onChange={handleChange}
+              disabled={hideFarming}
             />
             <Form.Button primary>Submit</Form.Button>
           </Form>
