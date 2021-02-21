@@ -76,13 +76,13 @@ function Snippet() {
         <Segment textAlign="left" secondary style={{ width: "50vw", margin: "auto" }}>
           <Form loading={loading} onSubmit={handleSubmit} spellcheck="false">
             <Form.Select
-              label="Pool Type"
+              label="Liquidity Pool Type"
               name="poolType"
               options={poolTypeOptions}
               onChange={handleChange}
             />
             <Form.Input
-              label="Pool Contract Address"
+              label="Liquidity Pool Contract Address"
               name="poolAddress"
               placeholder="0x1eff8af5d577060ba4ac8a29a13525bb0ee2a3d5"
               onChange={handleChange}
