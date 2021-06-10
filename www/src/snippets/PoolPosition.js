@@ -26,6 +26,12 @@ const poolTypeOptions = [
     text: '1Inch',
     value: PoolType.ONEINCH,
     farmLabel: 'Farming Contract Address (optional)'
+  },
+  {
+    key: 'UJenny',
+    text: 'UJenny',
+    value: PoolType.UJENNY,
+    farmLabel: 'Unic Farm Pool Id (optional)'
   }
 ];
 
@@ -46,7 +52,7 @@ function Snippet() {
     }
     const pool = findPoolType(poolType);
     setFarmLabel(pool.farmLabel)
-    if (holderInfo && holderInfo.startsWith('0x') && (pool.value === PoolType.ONEINCH || pool.value === PoolType.SUSHISWAP)) {
+    if (holderInfo && holderInfo.startsWith('0x') && (pool.value === PoolType.ONEINCH || pool.value === PoolType.SUSHISWAP || pool.value === PoolType.UJENNY)) {
       setHideFarming(false);
     } else {
       setHideFarming(true);
