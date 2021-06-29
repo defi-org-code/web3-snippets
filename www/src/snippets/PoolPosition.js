@@ -5,13 +5,13 @@ import { useApiKeys } from "../ApiKeys";
 const poolTypeOptions = [
   {
     key: 'Balancer',
-    text: 'Balancer',
+    text: 'Balancer V1',
     value: PoolType.BALANCER,
     farmLabel: 'Farm Address'
   },
   {
     key: 'Uniswap',
-    text: 'Uniswap',
+    text: 'Uniswap V2',
     value: PoolType.UNISWAP,
     farmLabel: 'Farm Address'
   },
