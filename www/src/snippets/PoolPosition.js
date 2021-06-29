@@ -10,6 +10,12 @@ const poolTypeOptions = [
     farmLabel: 'Farm Address'
   },
   {
+    key: 'Balancer2',
+    text: 'Balancer V2',
+    value: PoolType.BALANCER2,
+    farmLabel: 'Farm Address'
+  },
+  {
     key: 'Uniswap',
     text: 'Uniswap V2',
     value: PoolType.UNISWAP,
