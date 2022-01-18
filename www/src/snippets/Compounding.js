@@ -28,7 +28,7 @@ function Snippet() {
               onChange={handleChange}
             />
             <Form.Group widths="equal">
-              <Form.Input fluid label="APY (%)" name="apy" placeholder="30" onChange={handleChange} />
+              <Form.Input fluid label="APR (%)" name="apy" placeholder="30" onChange={handleChange} />
               <Form.Input fluid label="Num Days Investing" name="days" placeholder="7" onChange={handleChange} />
             </Form.Group>
             <Form.Group widths="equal">
