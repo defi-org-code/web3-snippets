@@ -6,4 +6,8 @@
 
 `/docs` - deployment target of `www` for github pages
 
+Run npm install in both /www and /lib
+
 Build the site with `/www/build.sh`
+
+Push
